@@ -1,3 +1,5 @@
+# https://medium.com/elixirlabs/when-to-use-processes-in-elixir-18287da73d47
+
 defmodule Storage do
 	def start(initial) do
 		process = spawn_link(fn -> execute(initial) end)
