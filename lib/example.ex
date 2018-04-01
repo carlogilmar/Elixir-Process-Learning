@@ -9,17 +9,23 @@ defmodule Example do
       {:ping, process} ->
         IO.puts "Ping!!"
         sender {process, :pong}
-        loop
+        loop()
 
       {:pong, process} ->
         IO.puts "Pong!!"
         sender {process, :ping}
-        loop
+        loop()
     end
   end
 
   def sender({process, msg}) do
     IO.puts "Sending to mailbox"
+    :timer.sleep(500)
+    IO.puts "..."
+    :timer.sleep(500)
+    IO.puts "..."
+    :timer.sleep(500)
+    IO.puts "..."
     send(process, {msg, process})
   end
 
