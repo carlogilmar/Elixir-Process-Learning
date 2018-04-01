@@ -1,18 +1,9 @@
 defmodule Learning do
-  @moduledoc """
-  Documentation for Learning.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Learning.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def loop(number) do
+    IO.puts "Loop #{number}"
+    Process.sleep 1_000
+    loop( number + 1 )
   end
+
 end
