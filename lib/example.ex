@@ -4,6 +4,11 @@ defmodule Example do
   # p = spawn(Example, :loop, [])
   # send(p, {:pong, p})
   # send(p, {:ping, p})
+  def start() do
+    ping_pong_process = spawn(Example, :loop, [])
+    sender {ping_pong_process, :ping}
+  end
+
   def loop do
     receive do
       {:ping, process} ->
