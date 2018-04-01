@@ -6,9 +6,21 @@ defmodule Example do
   # send(p, {:ping, p})
   def loop do
     receive do
-      {:ping} -> IO.puts "Ping!!"
-      {:pong} -> IO.puts "Pong!!"
+      {:ping, process} ->
+        IO.puts "Ping!!"
+        sender {process, :pong}
+        loop
+
+      {:pong, process} ->
+        IO.puts "Pong!!"
+        sender {process, :ping}
+        loop
     end
+  end
+
+  def sender({process, msg}) do
+    IO.puts "Sending to mailbox"
+    send(process, {msg, process})
   end
 
 end

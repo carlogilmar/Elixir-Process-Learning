@@ -1,5 +1,7 @@
 defmodule Learning do
 
+  # https://medium.com/learn-elixir/comfortable-learning-curve-for-elixir-part-3-44fa1cad3a9f
+
   def loop(number) do
     IO.puts "Loop #{number}"
     Process.sleep 1_000
