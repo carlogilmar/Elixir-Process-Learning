@@ -1,4 +1,7 @@
 defmodule SimpleGenServerMock do
+
+	# Gen server post https://medium.com/learn-elixir/genserver-explained-in-5-minutes-ae5823af4d44
+
    def start_link() do
        # runs in the caller context 🐌Alice
        spawn_link(__MODULE__, :init, [])
