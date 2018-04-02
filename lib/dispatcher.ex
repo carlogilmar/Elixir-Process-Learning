@@ -1,13 +1,15 @@
 defmodule Dispatcher do
 
-    def init do
-      server_process = spawn( Dispatcher, :server, [])
-      send( server_process, {"Puedes verme???"})
+    def start do
+      spawn( Dispatcher, :server, [])
     end
 
     def server do
       receive do
-        {message} -> IO.puts ".:::Server Receive: #{message}:::."
+        {:message, message} ->
+          IO.puts ".:::Server Receive: #{message}:::."
+        {:servers, server_info} ->
+          IO.puts "New server: #{server_info.name}"
       end
     end
 
