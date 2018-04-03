@@ -22,12 +22,20 @@ defmodule SimpleGenserver do
     {:noreply, state + 1}
   end
 
+  def handle_something() do
+    {:reply, "I'm a simple handle action reply"}
+  end
+
+  def handle_something(:giveMe) do
+    {:reply, "Give me the power!!!"}
+  end
+
 end
 
-#iex(1)> pid = SimpleGenServerMock.start_link
+#iex(1)> pid = SimpleGenServer.start_link
 ##PID<0.128.0>
-#iex(3)> counter = SimpleGenServerMock.call(pid, :get_data)
+#iex(3)> counter = SimpleGenServer.call(pid, :get_data)
 #1
-#iex(4)> SimpleGenServerMock.cast(pid, :increment)
-#iex(5)> counter = SimpleGenServerMock.call(pid, :get_data)
+#iex(4)> SimpleGenServer.cast(pid, :increment)
+#iex(5)> counter = SimpleGenServer.call(pid, :get_data)
 #2
